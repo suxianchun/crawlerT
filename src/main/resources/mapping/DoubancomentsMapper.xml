@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.craw.dao.DoubancomentsMapper" >
+  <resultMap id="BaseResultMap" type="com.craw.bean.Doubancoments" >
+    <id column="iddoubancomentsid" property="iddoubancomentsid" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="isuse" property="isuse" jdbcType="VARCHAR" />
+    <result column="usenumber" property="usenumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    iddoubancomentsid, image, name, date, isuse, usenumber
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from doubancoments
+    where iddoubancomentsid = #{iddoubancomentsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from doubancoments
+    where iddoubancomentsid = #{iddoubancomentsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.craw.bean.Doubancoments" >
+    insert into doubancoments (iddoubancomentsid, image, name, 
+      date, isuse, usenumber
+      )
+    values (#{iddoubancomentsid,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR}, #{isuse,jdbcType=VARCHAR}, #{usenumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.craw.bean.Doubancoments" >
+    insert into doubancoments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iddoubancomentsid != null" >
+        iddoubancomentsid,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="isuse != null" >
+        isuse,
+      </if>
+      <if test="usenumber != null" >
+        usenumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iddoubancomentsid != null" >
+        #{iddoubancomentsid,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null" >
+        #{isuse,jdbcType=VARCHAR},
+      </if>
+      <if test="usenumber != null" >
+        #{usenumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.craw.bean.Doubancoments" >
+    update doubancoments
+    <set >
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null" >
+        isuse = #{isuse,jdbcType=VARCHAR},
+      </if>
+      <if test="usenumber != null" >
+        usenumber = #{usenumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where iddoubancomentsid = #{iddoubancomentsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.craw.bean.Doubancoments" >
+    update doubancoments
+    set image = #{image,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      isuse = #{isuse,jdbcType=VARCHAR},
+      usenumber = #{usenumber,jdbcType=VARCHAR}
+    where iddoubancomentsid = #{iddoubancomentsid,jdbcType=VARCHAR}
+  </update>
+</mapper>

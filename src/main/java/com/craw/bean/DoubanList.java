@@ -110,4 +110,21 @@ public class DoubanList {
     public void setSimpleabstract(String simpleabstract) {
         this.simpleabstract = simpleabstract == null ? null : simpleabstract.trim();
     }
+
+    @Override
+    public String toString() {
+        return "DoubanList{" +
+                "doubanid='" + doubanid + '\'' +
+                ", title='" + title + '\'' +
+                ", star='" + star + '\'' +
+                ", author='" + author + '\'' +
+                ", content='" + content + '\'' +
+                ", imageurl='" + imageurl + '\'' +
+                ", press='" + press + '\'' +
+                ", detailhref='" + detailhref + '\'' +
+                ", rateNum='" + rateNum + '\'' +
+                ", numComments='" + numComments + '\'' +
+                ", simpleabstract='" + simpleabstract + '\'' +
+                '}';
+    }
 }

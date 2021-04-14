@@ -51,7 +51,7 @@ public class HttpClientHelper {
                 try {
                     httpResponse.close();
                 } catch (IOException e) {
-                    logger.error("http response close failed : " + e.getMessage());
+                    logger.error("URL " +url + " error response close failed : " + e.getMessage());
                 }
             }
         }

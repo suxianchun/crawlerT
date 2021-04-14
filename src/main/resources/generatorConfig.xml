@@ -48,6 +48,21 @@
                selectByExampleQueryId="false"
                enableSelectByPrimaryKey="true"
                domainObjectName= "DoubanList"> </table>
-
+        <table tableName="doubandetail"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableSelectByPrimaryKey="true"
+               domainObjectName= "Doubandetail"> </table>
+        <table tableName="doubancoments"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableSelectByPrimaryKey="true"
+               domainObjectName= "Doubancoments"> </table>
     </context>
 </generatorConfiguration>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.craw.dao.DoubandetailMapper" >
+  <resultMap id="BaseResultMap" type="com.craw.bean.Doubandetail" >
+    <id column="iddoubandetailid" property="iddoubandetailid" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="apress" property="apress" jdbcType="VARCHAR" />
+    <result column="apresses" property="apresses" jdbcType="VARCHAR" />
+    <result column="secondTile" property="secondtile" jdbcType="VARCHAR" />
+    <result column="resouceName" property="resoucename" jdbcType="VARCHAR" />
+    <result column="transName" property="transname" jdbcType="VARCHAR" />
+    <result column="syear" property="syear" jdbcType="VARCHAR" />
+    <result column="pages" property="pages" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="stack" property="stack" jdbcType="VARCHAR" />
+    <result column="ISBN" property="isbn" jdbcType="VARCHAR" />
+    <result column="contents" property="contents" jdbcType="VARCHAR" />
+    <result column="authorintr" property="authorintr" jdbcType="VARCHAR" />
+    <result column="catalog" property="catalog" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    iddoubandetailid, image, author, apress, apresses, secondTile, resouceName, transName, 
+    syear, pages, price, stack, ISBN, contents, authorintr, catalog
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from doubandetail
+    where iddoubandetailid = #{iddoubandetailid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from doubandetail
+    where iddoubandetailid = #{iddoubandetailid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.craw.bean.Doubandetail" >
+    insert into doubandetail (iddoubandetailid, image, author, 
+      apress, apresses, secondTile, 
+      resouceName, transName, syear, 
+      pages, price, stack, 
+      ISBN, contents, authorintr, 
+      catalog)
+    values (#{iddoubandetailid,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{apress,jdbcType=VARCHAR}, #{apresses,jdbcType=VARCHAR}, #{secondtile,jdbcType=VARCHAR}, 
+      #{resoucename,jdbcType=VARCHAR}, #{transname,jdbcType=VARCHAR}, #{syear,jdbcType=VARCHAR}, 
+      #{pages,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{stack,jdbcType=VARCHAR}, 
+      #{isbn,jdbcType=VARCHAR}, #{contents,jdbcType=VARCHAR}, #{authorintr,jdbcType=VARCHAR}, 
+      #{catalog,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.craw.bean.Doubandetail" >
+    insert into doubandetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iddoubandetailid != null" >
+        iddoubandetailid,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="apress != null" >
+        apress,
+      </if>
+      <if test="apresses != null" >
+        apresses,
+      </if>
+      <if test="secondtile != null" >
+        secondTile,
+      </if>
+      <if test="resoucename != null" >
+        resouceName,
+      </if>
+      <if test="transname != null" >
+        transName,
+      </if>
+      <if test="syear != null" >
+        syear,
+      </if>
+      <if test="pages != null" >
+        pages,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="stack != null" >
+        stack,
+      </if>
+      <if test="isbn != null" >
+        ISBN,
+      </if>
+      <if test="contents != null" >
+        contents,
+      </if>
+      <if test="authorintr != null" >
+        authorintr,
+      </if>
+      <if test="catalog != null" >
+        catalog,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iddoubandetailid != null" >
+        #{iddoubandetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="apress != null" >
+        #{apress,jdbcType=VARCHAR},
+      </if>
+      <if test="apresses != null" >
+        #{apresses,jdbcType=VARCHAR},
+      </if>
+      <if test="secondtile != null" >
+        #{secondtile,jdbcType=VARCHAR},
+      </if>
+      <if test="resoucename != null" >
+        #{resoucename,jdbcType=VARCHAR},
+      </if>
+      <if test="transname != null" >
+        #{transname,jdbcType=VARCHAR},
+      </if>
+      <if test="syear != null" >
+        #{syear,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null" >
+        #{pages,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stack != null" >
+        #{stack,jdbcType=VARCHAR},
+      </if>
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="authorintr != null" >
+        #{authorintr,jdbcType=VARCHAR},
+      </if>
+      <if test="catalog != null" >
+        #{catalog,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.craw.bean.Doubandetail" >
+    update doubandetail
+    <set >
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="apress != null" >
+        apress = #{apress,jdbcType=VARCHAR},
+      </if>
+      <if test="apresses != null" >
+        apresses = #{apresses,jdbcType=VARCHAR},
+      </if>
+      <if test="secondtile != null" >
+        secondTile = #{secondtile,jdbcType=VARCHAR},
+      </if>
+      <if test="resoucename != null" >
+        resouceName = #{resoucename,jdbcType=VARCHAR},
+      </if>
+      <if test="transname != null" >
+        transName = #{transname,jdbcType=VARCHAR},
+      </if>
+      <if test="syear != null" >
+        syear = #{syear,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null" >
+        pages = #{pages,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stack != null" >
+        stack = #{stack,jdbcType=VARCHAR},
+      </if>
+      <if test="isbn != null" >
+        ISBN = #{isbn,jdbcType=VARCHAR},
+      </if>
+      <if test="contents != null" >
+        contents = #{contents,jdbcType=VARCHAR},
+      </if>
+      <if test="authorintr != null" >
+        authorintr = #{authorintr,jdbcType=VARCHAR},
+      </if>
+      <if test="catalog != null" >
+        catalog = #{catalog,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where iddoubandetailid = #{iddoubandetailid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.craw.bean.Doubandetail" >
+    update doubandetail
+    set image = #{image,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      apress = #{apress,jdbcType=VARCHAR},
+      apresses = #{apresses,jdbcType=VARCHAR},
+      secondTile = #{secondtile,jdbcType=VARCHAR},
+      resouceName = #{resoucename,jdbcType=VARCHAR},
+      transName = #{transname,jdbcType=VARCHAR},
+      syear = #{syear,jdbcType=VARCHAR},
+      pages = #{pages,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      stack = #{stack,jdbcType=VARCHAR},
+      ISBN = #{isbn,jdbcType=VARCHAR},
+      contents = #{contents,jdbcType=VARCHAR},
+      authorintr = #{authorintr,jdbcType=VARCHAR},
+      catalog = #{catalog,jdbcType=VARCHAR}
+    where iddoubandetailid = #{iddoubandetailid,jdbcType=VARCHAR}
+  </update>
+</mapper>

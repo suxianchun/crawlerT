@@ -33,6 +33,7 @@ public class DoubanParseHtml {
     @Async
     public void parseDouBanList(String html)
     {
+
         Document document = Jsoup.parse(html);
         Elements elements = document.select("#subject_list > ul > li ");
         if(elements == null && elements.size()==0){
@@ -54,11 +55,11 @@ public class DoubanParseHtml {
                         doubanDetail.setImageurl(tempChilrder.get(0).attr("src"));
                     } else {
                         logger.error("get douban list parse html error : #subject_list > ul > li not found <img> tab ");
-                        return ;
+
                     }
                 } else {
                     logger.error("get douban list parse html error : #subject_list > ul > li not found <a> tab ");
-                    return ;
+
                 }
 
                 Element chirldrenEl = tempEl.get(1);
@@ -76,7 +77,7 @@ public class DoubanParseHtml {
                     }
                 }else{
                     logger.error("get douban list parse html error : #subject_list > ul > li not found h2 > a tab ");
-                    return ;
+
                 }
 
                 tempChilrder = chirldrenEl.select(".pub");
@@ -84,7 +85,7 @@ public class DoubanParseHtml {
                     doubanDetail.setPress(tempChilrder.get(0).text().trim());
                 }else{
                     logger.error("get douban list parse html error : #subject_list > ul > li not found .pub tab ");
-                    return ;
+
                 }
                 tempChilrder = chirldrenEl.select(".star");
                 if(check1Element(tempChilrder)) {
@@ -94,7 +95,7 @@ public class DoubanParseHtml {
                     }else
                     {
                         logger.error("get douban list parse html error : #subject_list > ul > li not found h2 > a > .star .rating_num tab ");
-                        return ;
+
                     }
                     tempChilrder = tempChilrder.get(0).select(".pl");
                     if(check1Element(tempChilrder)){
@@ -102,12 +103,12 @@ public class DoubanParseHtml {
                     }else
                     {
                         logger.error("get douban list parse html error : #subject_list > ul > li not found h2 > a > .star .pl tab ");
-                        return ;
+
                     }
 
                 }else{
                     logger.error("get douban list parse html error : #subject_list > ul > li not found .pub tab ");
-                    return ;
+
                 }
                 tempChilrder = chirldrenEl.select("p");
                 if(check1Element(tempChilrder)){
@@ -115,13 +116,15 @@ public class DoubanParseHtml {
                 }else
                 {
                     logger.error("get douban list parse html error : #subject_list > ul > li not found h2 > a > p tab ");
-                    return ;
+
                 }
             }else{
                 logger.error("get douban list parse html error : #subject_list > ul > li not found <div> tab ");
-                return ;
+
             }
+            logger.info("insert doubanlist message : " +doubanDetail.toString());
             doubanListMapper.insert(doubanDetail);
+            detailPage(doubanDetail.getDetailhref());
 
         }
 
@@ -129,7 +132,13 @@ public class DoubanParseHtml {
 
     }
 
-    private void detailPage(){
+    private void detailPage(String detailpage){
+        String htmldetailpage =  HttpClientHelper.getDataResponseHtml(detailpage);
+        logger.info("start insert detail page url : " + htmldetailpage);
+        Document document = Jsoup.parse(htmldetailpage);
+        String imageurl = document.select("#mainpic").get(0).child(0).attr("href");
+
+
 
     }
 

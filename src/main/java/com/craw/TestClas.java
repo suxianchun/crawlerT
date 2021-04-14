@@ -1,7 +1,6 @@
 package com.craw;
 
-import com.craw.bean.DoubanDetail;
-import com.craw.until.DoubanParseHtml;
+import com.craw.bean.Doubandetail;
 import com.craw.until.HttpClientHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +28,7 @@ public class TestClas {
         }
         logger.info(responseHtml);
         if(responseHtml!=null){
-            List<DoubanDetail> doubanDetailList = new ArrayList<DoubanDetail>();
+            List<Doubandetail> doubanDetailList = new ArrayList<Doubandetail>();
             //DoubanParseHtml.parseDouBanList(responseHtml,doubanDetailList);
 
         }

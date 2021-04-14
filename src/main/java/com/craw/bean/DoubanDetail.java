@@ -1,81 +1,53 @@
 package com.craw.bean;
 
-public class DoubanDetail {
+public class Doubandetail {
 
-    private String title;
+    private String iddoubandetailid;
 
-    private String star;
+    private String image;
 
     private String author;
 
-    private String content;
+    private String apress;
 
-    private String imageUrl;
+    private String apresses;
 
-    private String press;
+    private String secondtile;
 
-    private String detailHref;
+    private String resoucename;
 
-    private String rate_num;
+    private String transname;
 
-    private String num_comments;
+    private String syear;
 
-    private String simpleAbstract;
+    private String pages;
 
-    public String getSimpleAbstract() {
-        return simpleAbstract;
+    private Long price;
+
+    private String stack;
+
+    private String isbn;
+
+    private String contents;
+
+    private String authorintr;
+
+    private String catalog;
+
+    public String getIddoubandetailid() {
+        return iddoubandetailid;
     }
 
-    public void setSimpleAbstract(String simpleAbstract) {
-        this.simpleAbstract = simpleAbstract;
+    public void setIddoubandetailid(String iddoubandetailid) {
+        this.iddoubandetailid = iddoubandetailid == null ? null : iddoubandetailid.trim();
     }
 
-    public String getNum_comments() {
-        return num_comments;
+    public String getImage() {
+        return image;
     }
 
-    public void setNum_comments(String num_comments) {
-        this.num_comments = num_comments;
-    }
-
-    public String getRate_num() {
-        return rate_num;
-    }
-
-    public void setRate_num(String rate_num) {
-        this.rate_num = rate_num;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getDetailHref() {
-        return detailHref;
-    }
-
-    public void setDetailHref(String detailHref) {
-        this.detailHref = detailHref;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getStar() {
-        return star;
-    }
-
-    public void setStar(String star) {
-        this.star = star;
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 
     public String getAuthor() {
@@ -83,22 +55,132 @@ public class DoubanDetail {
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        this.author = author == null ? null : author.trim();
     }
 
-    public String getContent() {
-        return content;
+    public String getApress() {
+        return apress;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setApress(String apress) {
+        this.apress = apress == null ? null : apress.trim();
     }
 
-    public String getPress() {
-        return press;
+    public String getApresses() {
+        return apresses;
     }
 
-    public void setPress(String press) {
-        this.press = press;
+    public void setApresses(String apresses) {
+        this.apresses = apresses == null ? null : apresses.trim();
+    }
+
+    public String getSecondtile() {
+        return secondtile;
+    }
+
+    public void setSecondtile(String secondtile) {
+        this.secondtile = secondtile == null ? null : secondtile.trim();
+    }
+
+    public String getResoucename() {
+        return resoucename;
+    }
+
+    public void setResoucename(String resoucename) {
+        this.resoucename = resoucename == null ? null : resoucename.trim();
+    }
+
+    public String getTransname() {
+        return transname;
+    }
+
+    public void setTransname(String transname) {
+        this.transname = transname == null ? null : transname.trim();
+    }
+
+    public String getSyear() {
+        return syear;
+    }
+
+    public void setSyear(String syear) {
+        this.syear = syear == null ? null : syear.trim();
+    }
+
+    public String getPages() {
+        return pages;
+    }
+
+    public void setPages(String pages) {
+        this.pages = pages == null ? null : pages.trim();
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getStack() {
+        return stack;
+    }
+
+    public void setStack(String stack) {
+        this.stack = stack == null ? null : stack.trim();
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn == null ? null : isbn.trim();
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents == null ? null : contents.trim();
+    }
+
+    public String getAuthorintr() {
+        return authorintr;
+    }
+
+    public void setAuthorintr(String authorintr) {
+        this.authorintr = authorintr == null ? null : authorintr.trim();
+    }
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog == null ? null : catalog.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Doubandetail{" +
+                "iddoubandetailid='" + iddoubandetailid + '\'' +
+                ", image='" + image + '\'' +
+                ", author='" + author + '\'' +
+                ", apress='" + apress + '\'' +
+                ", apresses='" + apresses + '\'' +
+                ", secondtile='" + secondtile + '\'' +
+                ", resoucename='" + resoucename + '\'' +
+                ", transname='" + transname + '\'' +
+                ", syear='" + syear + '\'' +
+                ", pages='" + pages + '\'' +
+                ", price=" + price +
+                ", stack='" + stack + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", contents='" + contents + '\'' +
+                ", authorintr='" + authorintr + '\'' +
+                ", catalog='" + catalog + '\'' +
+                '}';
     }
 }
