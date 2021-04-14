@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.craw.dao.DoubanListMapper" >
+  <resultMap id="BaseResultMap" type="com.craw.bean.DoubanList" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="star" property="star" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="imageUrl" property="imageurl" jdbcType="VARCHAR" />
+    <result column="press" property="press" jdbcType="VARCHAR" />
+    <result column="detailHref" property="detailhref" jdbcType="VARCHAR" />
+    <result column="rate_num" property="rateNum" jdbcType="VARCHAR" />
+    <result column="num_comments" property="numComments" jdbcType="VARCHAR" />
+    <result column="simpleAbstract" property="simpleabstract" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, star, author, content, imageUrl, press, detailHref, rate_num, num_comments, 
+    simpleAbstract
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.craw.bean.DoubanListExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from doubanlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from doubanlist
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from doubanlist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.craw.bean.DoubanListExample" >
+    delete from doubanlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id"  parameterType="com.craw.bean.DoubanList" >
+    insert into doubanlist (id, title, star, 
+      author, content, imageUrl, 
+      press, detailHref, rate_num, 
+      num_comments, simpleAbstract)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{star,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{imageurl,jdbcType=VARCHAR}, 
+      #{press,jdbcType=VARCHAR}, #{detailhref,jdbcType=VARCHAR}, #{rateNum,jdbcType=VARCHAR}, 
+      #{numComments,jdbcType=VARCHAR}, #{simpleabstract,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"  parameterType="com.craw.bean.DoubanList" >
+    insert into doubanlist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="star != null" >
+        star,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="imageurl != null" >
+        imageUrl,
+      </if>
+      <if test="press != null" >
+        press,
+      </if>
+      <if test="detailhref != null" >
+        detailHref,
+      </if>
+      <if test="rateNum != null" >
+        rate_num,
+      </if>
+      <if test="numComments != null" >
+        num_comments,
+      </if>
+      <if test="simpleabstract != null" >
+        simpleAbstract,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="star != null" >
+        #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="press != null" >
+        #{press,jdbcType=VARCHAR},
+      </if>
+      <if test="detailhref != null" >
+        #{detailhref,jdbcType=VARCHAR},
+      </if>
+      <if test="rateNum != null" >
+        #{rateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="numComments != null" >
+        #{numComments,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleabstract != null" >
+        #{simpleabstract,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.craw.bean.DoubanListExample" resultType="java.lang.Integer" >
+    select count(*) from doubanlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update doubanlist
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.star != null" >
+        star = #{record.star,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageurl != null" >
+        imageUrl = #{record.imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.press != null" >
+        press = #{record.press,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detailhref != null" >
+        detailHref = #{record.detailhref,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rateNum != null" >
+        rate_num = #{record.rateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numComments != null" >
+        num_comments = #{record.numComments,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simpleabstract != null" >
+        simpleAbstract = #{record.simpleabstract,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update doubanlist
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      star = #{record.star,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      imageUrl = #{record.imageurl,jdbcType=VARCHAR},
+      press = #{record.press,jdbcType=VARCHAR},
+      detailHref = #{record.detailhref,jdbcType=VARCHAR},
+      rate_num = #{record.rateNum,jdbcType=VARCHAR},
+      num_comments = #{record.numComments,jdbcType=VARCHAR},
+      simpleAbstract = #{record.simpleabstract,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.craw.bean.DoubanList" >
+    update doubanlist
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="star != null" >
+        star = #{star,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imageurl != null" >
+        imageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="press != null" >
+        press = #{press,jdbcType=VARCHAR},
+      </if>
+      <if test="detailhref != null" >
+        detailHref = #{detailhref,jdbcType=VARCHAR},
+      </if>
+      <if test="rateNum != null" >
+        rate_num = #{rateNum,jdbcType=VARCHAR},
+      </if>
+      <if test="numComments != null" >
+        num_comments = #{numComments,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleabstract != null" >
+        simpleAbstract = #{simpleabstract,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.craw.bean.DoubanList" >
+    update doubanlist
+    set title = #{title,jdbcType=VARCHAR},
+      star = #{star,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      imageUrl = #{imageurl,jdbcType=VARCHAR},
+      press = #{press,jdbcType=VARCHAR},
+      detailHref = #{detailhref,jdbcType=VARCHAR},
+      rate_num = #{rateNum,jdbcType=VARCHAR},
+      num_comments = #{numComments,jdbcType=VARCHAR},
+      simpleAbstract = #{simpleabstract,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
